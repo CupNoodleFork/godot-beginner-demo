@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://game_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/cat_player.tscn" id="1_cat"]
+[ext_resource type="PackedScene" path="res://scenes/rat_enemy.tscn" id="2_rat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(20, 500)
+
+[node name="Game" type="Node2D"]
+
+[node name="CatPlayer" parent="." instance=ExtResource("1_cat")]
+position = Vector2(200, 300)
+
+[node name="Camera2D" type="Camera2D" parent="CatPlayer"]
+zoom = Vector2(3, 3)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(600, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="GroundSprite" type="ColorRect" parent="Ground"]
+offset_left = -600.0
+offset_top = -20.0
+offset_right = 600.0
+offset_bottom = 20.0
+color = Color(0.35, 0.55, 0.35, 1)
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(400, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="ColorRect" parent="Platform1"]
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+color = Color(0.45, 0.65, 0.45, 1)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(700, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="ColorRect" parent="Platform2"]
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+color = Color(0.45, 0.65, 0.45, 1)
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(250, 250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="ColorRect" parent="Platform3"]
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+color = Color(0.45, 0.65, 0.45, 1)
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="WallSprite" type="ColorRect" parent="WallLeft"]
+offset_left = -20.0
+offset_top = -250.0
+offset_right = 0.0
+offset_bottom = 250.0
+color = Color(0.5, 0.4, 0.35, 1)
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(1200, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="WallSprite" type="ColorRect" parent="WallRight"]
+offset_left = 0.0
+offset_top = -250.0
+offset_right = 20.0
+offset_bottom = 250.0
+color = Color(0.5, 0.4, 0.35, 1)
+
+[node name="RatEnemy1" parent="." instance=ExtResource("2_rat")]
+position = Vector2(500, 480)
+
+[node name="RatEnemy2" parent="." instance=ExtResource("2_rat")]
+position = Vector2(700, 310)
